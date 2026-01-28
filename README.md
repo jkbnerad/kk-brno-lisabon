@@ -1,1 +1,1 @@
-# kk-brno-lisabon
+# Lisabon 2026, tournament
