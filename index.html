@@ -95,5 +95,47 @@
             </a>
         </div>
     </main>
+    <footer class="bg-black/30 backdrop-blur-md border-t border-white/20 mt-8">
+        <div class="max-w-6xl mx-auto px-4 py-6">
+            <h3 class="text-xl font-bold text-rose-400 mb-4 text-center">☀️ Počasí v Lisabonu</h3>
+            <div id="weather-container" class="flex flex-wrap justify-center gap-4">
+                <p class="text-white/60">Načítám počasí...</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        async function loadWeather() {
+            try {
+                const response = await fetch('https://www.nerad.cz/weather-lisabon.php');
+                const data = await response.json();
+                const container = document.getElementById('weather-container');
+
+                if (data && data.forecast) {
+                    container.innerHTML = data.forecast.map(day => `
+                        <div class="bg-white/10 rounded-xl p-4 min-w-[120px] text-center">
+                            <div class="text-white/60 text-sm">${day.date}</div>
+                            <div class="text-3xl my-2">${day.icon || '☀️'}</div>
+                            <div class="text-white font-bold">${day.temp}°C</div>
+                            <div class="text-white/60 text-xs">${day.description || ''}</div>
+                        </div>
+                    `).join('');
+                } else if (data && Array.isArray(data)) {
+                    container.innerHTML = data.map(day => `
+                        <div class="bg-white/10 rounded-xl p-4 min-w-[120px] text-center">
+                            <div class="text-white/60 text-sm">${day.date || day.day}</div>
+                            <div class="text-3xl my-2">${day.icon || '☀️'}</div>
+                            <div class="text-white font-bold">${day.temp || day.temperature}°C</div>
+                            <div class="text-white/60 text-xs">${day.description || day.weather || ''}</div>
+                        </div>
+                    `).join('');
+                } else {
+                    container.innerHTML = '<p class="text-white/60">Počasí není k dispozici</p>';
+                }
+            } catch (error) {
+                document.getElementById('weather-container').innerHTML = '<p class="text-white/60">Nepodařilo se načíst počasí</p>';
+            }
+        }
+        loadWeather();
+    </script>
 </body>
 </html>
