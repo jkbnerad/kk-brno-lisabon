@@ -9,7 +9,11 @@
 <body class="bg-gradient-to-br from-gray-900 via-gray-800 to-rose-600 min-h-screen">
     <nav class="bg-black/30 backdrop-blur-md border-b border-white/20">
         <div class="max-w-6xl mx-auto px-4">
-            <ul class="flex flex-wrap justify-center gap-1 md:gap-4 py-4">
+            <div class="flex justify-center gap-6 py-2 text-sm border-b border-white/10 mb-2">
+                <span class="text-white/80">🇵🇹 Lisabon: <span id="time-lisbon" class="font-mono text-rose-300">--:--</span></span>
+                <span class="text-white/80">🇨🇿 Brno: <span id="time-brno" class="font-mono text-rose-300">--:--</span></span>
+            </div>
+            <ul class="flex flex-wrap justify-center gap-1 md:gap-4 py-2">
                 <li><a href="index.html" class="px-4 py-2 rounded-lg text-white hover:bg-white/20 transition">Úvod</a></li>
                 <li><a href="doprava.html" class="px-4 py-2 rounded-lg text-white hover:bg-white/20 transition">Doprava</a></li>
                 <li><a href="ubytko.html" class="px-4 py-2 rounded-lg text-white hover:bg-white/20 transition">Ubytko</a></li>
@@ -18,6 +22,17 @@
             </ul>
         </div>
     </nav>
+    <script>
+        function updateClocks() {
+            const now = new Date();
+            const lisbon = now.toLocaleTimeString('cs-CZ', { timeZone: 'Europe/Lisbon', hour: '2-digit', minute: '2-digit' });
+            const brno = now.toLocaleTimeString('cs-CZ', { timeZone: 'Europe/Prague', hour: '2-digit', minute: '2-digit' });
+            document.getElementById('time-lisbon').textContent = lisbon;
+            document.getElementById('time-brno').textContent = brno;
+        }
+        updateClocks();
+        setInterval(updateClocks, 1000);
+    </script>
     <main class="max-w-6xl mx-auto px-4 py-8">
         <div class="text-center mb-8">
             <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">Sportovní hala</h1>
