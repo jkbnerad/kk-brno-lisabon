@@ -1,0 +1,61 @@
+/* KK Brno - Lisabon 2026 */
+
+/* Základní styly těla */
+body {
+    min-height: 100vh;
+}
+
+/* Navigace */
+.nav-link {
+    @apply px-4 py-2 rounded-lg text-white hover:bg-white/20 transition;
+}
+
+.nav-link-active {
+    @apply px-4 py-2 rounded-lg bg-rose-500 text-white font-bold transition hover:bg-rose-400;
+}
+
+/* Karty */
+.card {
+    @apply bg-black/30 backdrop-blur-md rounded-2xl p-6 border border-white/20;
+}
+
+.card-small {
+    @apply bg-black/30 backdrop-blur-md rounded-2xl p-5 border border-white/20;
+}
+
+/* Zápasy KK Brno - zvýraznění */
+.match-brno {
+    @apply bg-rose-500/20 rounded-lg p-3 border border-rose-500/50;
+}
+
+/* Skóre placeholder */
+.score {
+    @apply px-3 py-1 bg-white/10 rounded font-mono min-w-[60px] text-center;
+}
+
+.score-brno {
+    @apply px-3 py-1 bg-rose-500/30 rounded font-mono min-w-[60px] text-center;
+}
+
+/* Počasí kartičky */
+.weather-card {
+    @apply bg-white/10 rounded-xl p-4 min-w-[120px] text-center;
+}
+
+/* Nadpisy */
+.heading-1 {
+    @apply text-4xl md:text-5xl font-bold text-white mb-2;
+}
+
+.heading-2 {
+    @apply text-2xl font-bold text-rose-400 mb-4;
+}
+
+.heading-3 {
+    @apply text-xl font-bold text-rose-400 mb-4;
+}
+
+/* Časové údaje */
+.time-display {
+    @apply font-mono text-rose-300;
+}
